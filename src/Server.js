@@ -1,17 +1,17 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB=require("./Config/db")
-const userRoutes = require("./routes/userRoutes");
-const PORT = process.env.PORT;
-app.use(express.json());
+const userRoutes = require("./Routes/user_routes");
 
 const app = express();
+app.use(express.json());
 dotenv.config();
 connectDB();
 
 
 app.use("/api/users", userRoutes);
 
-app.listen( PORT,() => {
-  console.log('http://localhost:5000');
+app.listen( 3000,() => {
+  console.log('http://localhost:3000/api/users');
+  
 });

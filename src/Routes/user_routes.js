@@ -10,7 +10,7 @@ const {
   deleteUser,
   updateStatus,
   updateLastLogin,
-} = require("../controllers/userController");
+} = require("../Controller/user_controller");
 
 
 // Create User

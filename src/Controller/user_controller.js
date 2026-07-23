@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const User = require('../model/usermodle');
 
 // Create User
 const createUser = async (req, res) => {
@@ -18,6 +18,8 @@ const createUser = async (req, res) => {
       message: "User created successfully",
       user,
     });
+    console.log(user);
+    
 
   } catch (error) {
     res.status(500).json({
@@ -30,13 +32,24 @@ const createUser = async (req, res) => {
 
 // Get All Users
 const getUsers = async (req, res) => {
+   
+    
   try {
-    const users = await User.find();
+      console.log("Database:", User.db.name);
+    console.log("Collection:", User.collection.name);
+   
+    
 
+    const users = await User.find();
+     
     res.status(200).json({
       success: true,
       users,
     });
+      console.log(users); // database me save hone wala data
+
+  
+    
 
   } catch (error) {
     res.status(500).json({
@@ -51,6 +64,7 @@ const getUsers = async (req, res) => {
 const getUserById = async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
+
 
     if (!user) {
       return res.status(404).json({
